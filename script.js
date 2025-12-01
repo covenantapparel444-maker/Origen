@@ -3,18 +3,35 @@
 // -----------------------------
 document.addEventListener("DOMContentLoaded", () => {
   const loader = document.getElementById("loader");
+  const progress = document.querySelector(".loader-progress");
+  const percent = document.querySelector(".loader-percentage");
 
-  // Espera a que el DOM cargue un momento para evitar flash
-  setTimeout(() => {
-    loader.style.opacity = "0";
+  let load = 0;
 
-    // Cuando la transición termine, ocultamos el loader
-    loader.addEventListener("transitionend", () => {
-      loader.style.display = "none";
-    });
+  const interval = setInterval(() => {
+    load += Math.floor(Math.random() * 8) + 3; // velocidad irregular para efecto realista
 
-  }, 600); // puedes ajustar el tiempo si quieres
+    if (load >= 100) {
+      load = 100;
+      clearInterval(interval);
+
+      // Fade out
+      setTimeout(() => {
+        loader.style.opacity = "0";
+
+        loader.addEventListener("transitionend", () => {
+          loader.style.display = "none";
+        });
+
+      }, 300);
+    }
+
+    progress.style.width = load + "%";
+    percent.textContent = load + "%";
+
+  }, 120);
 });
+
 
 // -----------------------------
 // SCROLL ANIMATIONS
