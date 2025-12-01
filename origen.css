@@ -1,190 +1,222 @@
-/* RESET */
+/* -------------------------
+   RESET
+--------------------------*/
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-body {
+html, body {
   background: #000;
   color: #fff;
-  font-family: 'Inter', sans-serif;
-  overflow-x: hidden;
+  font-family: "Inter", sans-serif;
+  scroll-behavior: smooth;
 }
 
-/* =============================== */
-/*         LOADING SCREEN          */
-/* =============================== */
-
-/* ------------------ LOADER ------------------ */
-
+/* -------------------------
+   LOADING SCREEN
+--------------------------*/
 #loader {
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background: #000;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   z-index: 9999;
-  opacity: 1;
-  transition: opacity 0.8s ease;
 }
 
-.loader-bar {
-  width: 70%;
-  max-width: 300px;
-  height: 3px;
-  background: #222;
-  overflow: hidden;
-  border-radius: 2px;
-}
-
-.loader-progress {
+#loader-bar {
   width: 0%;
-  height: 100%;
-  background: white;
-  transition: width 0.2s linear;
+  height: 4px;
+  background: #fff;
+  transition: width 0.4s ease;
 }
 
-.loader-percentage {
-  margin-top: 15px;
-  font-size: 0.9rem;
-  color: #fff;
-  letter-spacing: 2px;
-  opacity: 0.7;
+#loader-text {
+  margin-top: 12px;
+  font-size: 14px;
+  opacity: 0.6;
 }
 
-/* =============================== */
-/*             HERO                */
-/* =============================== */
-
+/* -------------------------
+   HERO
+--------------------------*/
 .hero {
-  height: 85vh;
-  width: 100%;
-  position: relative;
+  height: 100vh;
   display: flex;
-  align-items: flex-end;
+  flex-direction: column;
   justify-content: center;
-
-  /* Reemplaza esta imagen cuando la subas */
-  background: url("hero.jpg") center/cover no-repeat;
-  background-attachment: fixed;
-}
-
-.hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(0,0,0,0.1), rgba(0,0,0,0.85));
-}
-
-.hero-content {
-  position: relative;
+  align-items: center;
   text-align: center;
-  padding-bottom: 80px;
+  padding: 0 20px;
 }
 
 .hero h1 {
-  font-family: 'Archivo Black', sans-serif;
-  font-size: 3rem;
-  letter-spacing: 6px;
-  position: relative;
-  animation: fadeIn 2s ease forwards;
+  font-size: 72px;
+  letter-spacing: 8px;
+  font-weight: 800;
 }
 
-.subtitle {
-  margin-top: 10px;
-  font-size: 1rem;
-  letter-spacing: 3px;
-  opacity: 0.8;
-  animation: fadeIn 2.4s ease forwards;
+.hero .sub {
+  margin-top: 12px;
+  font-size: 18px;
+  opacity: 0.7;
 }
 
-/* =============================== */
-/*            CONTENT              */
-/* =============================== */
-
-.content {
-  width: 90%;
-  max-width: 760px;
-  margin: 70px auto 120px;
+/* -------------------------
+   SECTIONS
+--------------------------*/
+.section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 150px 10%;
+  gap: 60px;
 }
 
-.block {
-  margin-bottom: 80px;
+.section.center {
+  text-align: center;
+  flex-direction: column;
 }
 
-.block h2 {
-  font-family: "Archivo Black", sans-serif;
-  font-size: 1.8rem;
-  margin-bottom: 18px;
-  letter-spacing: 2px;
+.section:nth-child(even) {
+  flex-direction: row-reverse;
 }
 
-.block p {
-  font-size: 1rem;
+/* -------------------------
+   TEXT BLOCK
+--------------------------*/
+.text-block {
+  flex: 1;
+}
+
+.text-block h2 {
+  font-size: 42px;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.text-block p {
+  font-size: 18px;
   line-height: 1.7;
-  color: #ddd;
-  margin-bottom: 12px;
+  opacity: 0.85;
 }
 
-.quote {
-  margin-top: 14px;
-  font-size: 1rem;
-  font-style: italic;
-  opacity: 0.9;
+/* -------------------------
+   IMAGE PLACEHOLDERS
+--------------------------*/
+.img-placeholder {
+  flex: 1;
+  height: 350px;
+  background: #222;
+  border-radius: 12px;
+  opacity: 0.7;
+  transition: opacity 0.4s ease;
 }
 
-.easter-egg {
-  margin-top: 20px;
-  font-size: 1.1rem;
-  color: #aaa;
-  letter-spacing: 1px;
+.img-placeholder:hover {
+  opacity: 1;
 }
 
-/* =============================== */
-/*         CTA BUTTON              */
-/* =============================== */
+.img-placeholder.tall {
+  height: 550px;
+}
 
-.cta {
-  display: block;
-  margin: 120px auto 0;
-  width: fit-content;
-  padding: 14px 28px;
-  border: 1px solid #444;
-  border-radius: 6px;
-  color: #fff;
+.img-placeholder.wide {
+  width: 100%;
+  height: 300px;
+}
+
+/* -------------------------
+   EASTER EGG TEXT
+--------------------------*/
+.easter {
+  font-size: 26px;
+  margin-bottom: 10px;
+  opacity: 0.8;
+}
+
+.easter-sub {
+  font-size: 18px;
+  opacity: 0.5;
+}
+
+/* -------------------------
+   FINAL SECTION
+--------------------------*/
+.final {
+  text-align: center;
+  padding: 150px 10%;
+}
+
+.final h2 {
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
+.final p {
+  font-size: 18px;
+  opacity: 0.7;
+  margin-bottom: 40px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 14px 32px;
+  border: 1px solid #fff;
   text-decoration: none;
-  letter-spacing: 2px;
-  font-size: 0.9rem;
+  color: #fff;
+  border-radius: 8px;
+  font-size: 16px;
+  letter-spacing: 1px;
   transition: 0.3s ease;
 }
 
-.cta:hover {
-  border-color: #fff;
-  transform: scale(1.03);
+.btn:hover {
+  background: #fff;
+  color: #000;
 }
 
-/* =============================== */
-/*       FADE ANIMATION BLOCKS     */
-/* =============================== */
-
-.fade {
+/* -------------------------
+   ANIMATIONS
+--------------------------*/
+.fade-in,
+.fade-up {
   opacity: 0;
-  transform: translateY(25px);
-  transition: opacity 1s ease, transform 1s ease;
+  transform: translateY(20px);
+  transition: opacity 1.1s ease, transform 1.1s ease;
 }
 
-.fade.visible {
+.fade-in.show,
+.fade-up.show {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* =============================== */
-/*         BASIC EFFECTS           */
-/* =============================== */
+/* -------------------------
+   RESPONSIVE
+--------------------------*/
+@media (max-width: 900px) {
+  .section {
+    flex-direction: column !important;
+    text-align: center;
+  }
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  .img-placeholder {
+    width: 100%;
+  }
+
+  .text-block h2 {
+    font-size: 32px;
+  }
+
+  .hero h1 {
+    font-size: 48px;
+  }
 }
