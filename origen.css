@@ -1,0 +1,191 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #000;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+/* =============================== */
+/*         LOADING SCREEN          */
+/* =============================== */
+
+#loader {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+.loader-content {
+  text-align: center;
+  animation: fadeIn 1.2s ease forwards;
+}
+
+.loader-logo {
+  width: 140px;
+  opacity: 0;
+  animation: popIn 1.3s ease forwards;
+}
+
+.loader-text {
+  margin-top: 18px;
+  font-size: 0.9rem;
+  letter-spacing: 3px;
+  opacity: 0;
+  animation: fadeUp 1.5s ease 0.4s forwards;
+}
+
+@keyframes popIn {
+  0% { opacity: 0; transform: scale(0.8); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* =============================== */
+/*             HERO                */
+/* =============================== */
+
+.hero {
+  height: 85vh;
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+
+  /* Reemplaza esta imagen cuando la subas */
+  background: url("hero.jpg") center/cover no-repeat;
+  background-attachment: fixed;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.1), rgba(0,0,0,0.85));
+}
+
+.hero-content {
+  position: relative;
+  text-align: center;
+  padding-bottom: 80px;
+}
+
+.hero h1 {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 3rem;
+  letter-spacing: 6px;
+  position: relative;
+  animation: fadeIn 2s ease forwards;
+}
+
+.subtitle {
+  margin-top: 10px;
+  font-size: 1rem;
+  letter-spacing: 3px;
+  opacity: 0.8;
+  animation: fadeIn 2.4s ease forwards;
+}
+
+/* =============================== */
+/*            CONTENT              */
+/* =============================== */
+
+.content {
+  width: 90%;
+  max-width: 760px;
+  margin: 70px auto 120px;
+}
+
+.block {
+  margin-bottom: 80px;
+}
+
+.block h2 {
+  font-family: "Archivo Black", sans-serif;
+  font-size: 1.8rem;
+  margin-bottom: 18px;
+  letter-spacing: 2px;
+}
+
+.block p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #ddd;
+  margin-bottom: 12px;
+}
+
+.quote {
+  margin-top: 14px;
+  font-size: 1rem;
+  font-style: italic;
+  opacity: 0.9;
+}
+
+.easter-egg {
+  margin-top: 20px;
+  font-size: 1.1rem;
+  color: #aaa;
+  letter-spacing: 1px;
+}
+
+/* =============================== */
+/*         CTA BUTTON              */
+/* =============================== */
+
+.cta {
+  display: block;
+  margin: 120px auto 0;
+  width: fit-content;
+  padding: 14px 28px;
+  border: 1px solid #444;
+  border-radius: 6px;
+  color: #fff;
+  text-decoration: none;
+  letter-spacing: 2px;
+  font-size: 0.9rem;
+  transition: 0.3s ease;
+}
+
+.cta:hover {
+  border-color: #fff;
+  transform: scale(1.03);
+}
+
+/* =============================== */
+/*       FADE ANIMATION BLOCKS     */
+/* =============================== */
+
+.fade {
+  opacity: 0;
+  transform: translateY(25px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.fade.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =============================== */
+/*         BASIC EFFECTS           */
+/* =============================== */
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
