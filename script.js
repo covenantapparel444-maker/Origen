@@ -1,21 +1,34 @@
 // LOADER ANIMATION
-let width = 0;
-const bar = document.getElementById("loader-bar");
-const loader = document.getElementById("loader");
+document.addEventListener("DOMContentLoaded", () => {
+  const loader = document.getElementById("loader");
+  const progress = document.querySelector(".loader-progress");
+  const percent = document.querySelector(".loader-percentage");
 
-const loading = setInterval(() => {
-  width += 8;
-  bar.style.width = width + "%";
+  let load = 0;
 
-  if (width >= 100) {
-    clearInterval(loading);
-    setTimeout(() => {
-      loader.style.opacity = "0";
-      loader.style.pointerEvents = "none";
-      setTimeout(() => loader.remove(), 600);
-    }, 300);
-  }
-}, 100);
+  const interval = setInterval(() => {
+    load += Math.floor(Math.random() * 8) + 3; // velocidad irregular para efecto realista
+
+    if (load >= 100) {
+      load = 100;
+      clearInterval(interval);
+
+      // Fade out
+      setTimeout(() => {
+        loader.style.opacity = "0";
+
+        loader.addEventListener("transitionend", () => {
+          loader.style.display = "none";
+        });
+
+      }, 300);
+    }
+
+    progress.style.width = load + "%";
+    percent.textContent = load + "%";
+
+  }, 120);
+});
 
 // SCROLL ANIMATIONS
 const elements = document.querySelectorAll(".fade-in, .fade-up");
