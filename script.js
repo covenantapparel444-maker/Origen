@@ -1,22 +1,19 @@
 // -----------------------------
 // PANTALLA DE CARGA (VERSIÓN INFALIBLE)
 // -----------------------------
-window.addEventListener("load", () => {
-  const loader = document.querySelector(".loader");
-  if (!loader) return;
+document.addEventListener("DOMContentLoaded", () => {
+  const loader = document.getElementById("loader");
 
-  // Asegura fade out
-  loader.style.opacity = "1";
-
+  // Espera a que el DOM cargue un momento para evitar flash
   setTimeout(() => {
-    loader.style.transition = "opacity 0.8s ease";
     loader.style.opacity = "0";
 
-    // Remueve del DOM después del fade
-    setTimeout(() => {
+    // Cuando la transición termine, ocultamos el loader
+    loader.addEventListener("transitionend", () => {
       loader.style.display = "none";
-    }, 900);
-  }, 800);
+    });
+
+  }, 600); // puedes ajustar el tiempo si quieres
 });
 
 // -----------------------------
