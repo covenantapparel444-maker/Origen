@@ -3,9 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>COVENANT — ORIGEN</title>
+  <title>ORIGEN</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <!-- Tipografías -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Archivo+Black&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="origen.css" />
 </head>
 
@@ -13,89 +17,83 @@
 
   <!-- LOADING SCREEN -->
   <div id="loader">
-    <div id="loader-bar"></div>
-    <p id="loader-text">Cargando...</p>
+    <div class="loader-bar">
+      <div class="loader-progress"></div>
+    </div>
+    <p class="loader-percentage">0%</p>
   </div>
 
   <!-- HERO -->
-  <section class="hero fade-in">
-    <h1>ORIGEN</h1>
-    <p class="sub">Donde nace la promesa.</p>
+  <section class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>ORIGEN</h1>
+      <p class="subtitle">Donde nace la promesa.</p>
+    </div>
   </section>
 
-  <!-- SECCIÓN 1 -->
-  <section class="section fade-up">
-    <div class="text-block">
-      <h2>El primer latido.</h2>
+  <!-- CONTENT -->
+  <section class="content">
+
+    <div class="block fade">
+      <h2>El inicio</h2>
       <p>
-        Todo proyecto tiene un instante sagrado: ese momento donde la idea aún es solo una chispa,
-        pero ya sabes que puede convertirse en fuego.
+        Covenant nació como una promesa. No de éxito, sino de <strong>propósito</strong>.
+        De hacer las cosas con intención, de construir algo que trascienda la moda.
+        Cada prenda, cada detalle, es una pieza de una historia que apenas comienza.
+      </p>
+      <p class="quote">“No nacimos para seguir tendencias. Nacimos para crear un legado.”</p>
+    </div>
+
+    <div class="block fade">
+      <h2>El Manifiesto</h2>
+      <p>Desde el principio, supimos que lo que vestimos no debía ser vacío.</p>
+      <p><strong>No seguimos la prisa de lo efímero.</strong></p>
+      <p><strong>No rendimos culto a lo pasajero.</strong></p>
+      <p>Hoy hacemos un pacto.</p>
+      <p><strong>Cada pieza llevará consigo el peso de lo eterno,</strong></p>
+      <p><strong>la fuerza de lo esencial,</strong></p>
+      <p><strong>la verdad de una promesa cumplida.</strong></p>
+      <p>Esto no es moda.  
+      <br><strong>Es COVENANT.</strong></p>
+    </div>
+
+    <div class="block fade">
+      <h2>Founders Club</h2>
+      <p>
+        El 4 de octubre nació <strong>Founders Club</strong>: dos piezas, una para hombre y una para mujer.
+        Los primeros en creer, los pioneros que dieron vida a la marca.
       </p>
       <p>
-        Aquí nace esa chispa. Aquí es donde el camino toma forma.
+        Ser Founder significa acceso exclusivo a colecciones limitadas, experiencias únicas y la posibilidad de dejar huella en la historia de Covenant.
       </p>
     </div>
 
-    <div class="img-placeholder tall"></div>
-  </section>
-
-  <!-- SECCIÓN 2 -->
-  <section class="section fade-up">
-    <div class="text-block">
-      <h2>La visión se define.</h2>
+    <div class="block fade">
+      <h2>La Línea del Tiempo</h2>
       <p>
-        ORIGEN es la raíz de todo lo que viene después: la prueba de que cada movimiento tiene intención.
-        No buscamos perfección, buscamos propósito.
+        Todo comenzó el <strong>25 de julio</strong>.  
+        Desde entonces, Covenant crece en silencios, decisiones y fuego creativo.
       </p>
       <p>
-        Un propósito que crece, se refuerza y finalmente... evoluciona.
+        Nuestra comunidad —<strong>The First Circle</strong>— sigue expandiéndose.
       </p>
     </div>
 
-    <div class="img-placeholder"></div>
-  </section>
-
-  <!-- SECCIÓN 3 -->
-  <section class="section fade-up">
-    <div class="text-block">
-      <h2>Construyendo algo más grande.</h2>
+    <div class="block fade">
+      <h2>Una Señal del Futuro</h2>
       <p>
-        No estamos creando un proyecto. Estamos iniciando algo que resonará más allá del tiempo.
+        Algo se está formando.  
+        Un susurro.  
+        Un pacto.  
       </p>
-      <p>
-        De aquí nace una comunidad guiada por ambición, disciplina y visión compartida.
-        Un espacio donde no solo avanzas: te transformas.
+      <p class="easter-egg">
+        No diremos su nombre aún…  
+        pero ya puedes sentirlo.
       </p>
-      <p class="quote">"Nada grande empieza siendo visible."</p>
     </div>
 
-    <div class="img-placeholder tall"></div>
-  </section>
-
-  <!-- SECCIÓN 4 -->
-  <section class="section fade-up">
-    <div class="text-block">
-      <h2>La comunidad.</h2>
-      <p>
-        Un nombre no define una comunidad. Su intención sí.
-      </p>
-      <p>
-        Hemos creado un espacio para las personas que se mueven diferente:
-        los que observan, los que construyen, los que no necesitan gritar para dejar huella.
-      </p>
-      <p><strong>Bienvenido a NEXUS PRIME.</strong></p>
-    </div>
-
-    <div class="img-placeholder"></div>
-  </section>
-
-  <!-- SECCIÓN FINAL -->
-  <section class="final fade-up">
-    <h2>Este es solo el comienzo.</h2>
-    <p>Algo se acerca. Una señal. Un pacto.</p>
-    <p class="easter-sub">Todavía no diremos su nombre... pero ya puedes sentirlo.</p>
-
-    <a href="https://covenantstudios.co" class="btn">VOLVER A LA WEB</a>
+    <a href="https://covenantstudios.co" class="cta">SE PARTE DE COVENANT</a>
   </section>
 
   <script src="script.js"></script>
