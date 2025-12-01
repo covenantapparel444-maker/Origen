@@ -1,3 +1,5 @@
+console.log("JS CARGÓ CORRECTAMENTE");
+
 // -----------------------------
 // PANTALLA DE CARGA (VERSIÓN INFALIBLE)
 // -----------------------------
