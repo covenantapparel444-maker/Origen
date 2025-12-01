@@ -3,99 +3,148 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>COVENANT — ORIGEN</title>
+  <title>Página Cinematográfica</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: sans-serif;
+    }
 
-  <!-- Tipografías -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Archivo+Black&display=swap" rel="stylesheet">
+    body {
+      background: #000;
+      color: #fff;
+      overflow-x: hidden;
+    }
 
-  <link rel="stylesheet" href="origen.css" />
+    /* Barra de carga inicial */
+    .loader-wrapper {
+      position: fixed;
+      inset: 0;
+      background: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      transition: opacity 0.8s ease;
+    }
+
+    .loader-bar {
+      width: 200px;
+      height: 6px;
+      background: #333;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .loader-fill {
+      width: 0%;
+      height: 100%;
+      background: #fff;
+      animation: load 2.2s forwards ease;
+    }
+
+    @keyframes load {
+      to { width: 100%; }
+    }
+
+    /* Secciones */
+    section {
+      min-height: 100vh;
+      padding: 80px 10%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    .title {
+      font-size: 48px;
+      font-weight: 700;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.8s ease;
+    }
+
+    .text {
+      font-size: 20px;
+      line-height: 1.5;
+      max-width: 600px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.8s ease 0.2s;
+    }
+
+    /* Placeholder gris para imágenes */
+    .img-placeholder {
+      width: 100%;
+      height: 400px;
+      background: #444;
+      border-radius: 12px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.8s ease 0.4s;
+    }
+
+    /* Animación al hacer scroll */
+    .visible {
+      opacity: 1 !important;
+      transform: translateY(0) !important;
+    }
+  </style>
 </head>
-
 <body>
 
-  <!-- LOADING SCREEN -->
-  <div id="loader">
+  <!-- Loader -->
+  <div class="loader-wrapper" id="loader">
     <div class="loader-bar">
-      <div class="loader-progress"></div>
+      <div class="loader-fill"></div>
     </div>
-    <p class="loader-percentage">0%</p>
   </div>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <h1>ORIGEN</h1>
-      <p class="subtitle">Donde nace la promesa.</p>
-    </div>
+  <!-- Sección 1 -->
+  <section>
+    <h1 class="title">Título Cinematográfico</h1>
+    <p class="text">Aquí va un texto introductorio fuerte, claro y elegante. Cuando subas tus imágenes, se reemplazan estos recuadros grises automáticamente.</p>
+    <div class="img-placeholder"></div>
   </section>
 
-  <!-- CONTENT -->
-  <section class="content">
-
-    <div class="block fade">
-      <h2>El inicio</h2>
-      <p>
-        Covenant nació como una promesa. No de éxito, sino de <strong>propósito</strong>.
-        De hacer las cosas con intención, de construir algo que trascienda la moda.
-        Cada prenda, cada detalle, es una pieza de una historia que apenas comienza.
-      </p>
-      <p class="quote">“No nacimos para seguir tendencias. Nacimos para crear un legado.”</p>
-    </div>
-
-    <div class="block fade">
-      <h2>El Manifiesto</h2>
-      <p>Desde el principio, supimos que lo que vestimos no debía ser vacío.</p>
-      <p><strong>No seguimos la prisa de lo efímero.</strong></p>
-      <p><strong>No rendimos culto a lo pasajero.</strong></p>
-      <p>Hoy hacemos un pacto.</p>
-      <p><strong>Cada pieza llevará consigo el peso de lo eterno,</strong></p>
-      <p><strong>la fuerza de lo esencial,</strong></p>
-      <p><strong>la verdad de una promesa cumplida.</strong></p>
-      <p>Esto no es moda.  
-      <br><strong>Es COVENANT.</strong></p>
-    </div>
-
-    <div class="block fade">
-      <h2>Founders Club</h2>
-      <p>
-        El 4 de octubre nació <strong>Founders Club</strong>: dos piezas, una para hombre y una para mujer.
-        Los primeros en creer, los pioneros que dieron vida a la marca.
-      </p>
-      <p>
-        Ser Founder significa acceso exclusivo a colecciones limitadas, experiencias únicas y la posibilidad de dejar huella en la historia de Covenant.
-      </p>
-    </div>
-
-    <div class="block fade">
-      <h2>La Línea del Tiempo</h2>
-      <p>
-        Todo comenzó el <strong>25 de julio</strong>.  
-        Desde entonces, Covenant crece en silencios, decisiones y fuego creativo.
-      </p>
-      <p>
-        Nuestra comunidad —<strong>The First Circle</strong>— sigue expandiéndose.
-      </p>
-    </div>
-
-    <div class="block fade">
-      <h2>Una Señal del Futuro</h2>
-      <p>
-        Algo se está formando.  
-        Un susurro.  
-        Un pacto.  
-      </p>
-      <p class="easter-egg">
-        No diremos su nombre aún…  
-        pero ya puedes sentirlo.
-      </p>
-    </div>
-
-    <a href="https://covenantstudios.co" class="cta">VOLVER A LA WEB</a>
+  <!-- Sección 2 -->
+  <section>
+    <h1 class="title">Subtítulo Impactante</h1>
+    <p class="text">Texto descriptivo que ayuda a crear el ritmo cinematográfico de la página mientras haces scroll.</p>
+    <div class="img-placeholder"></div>
   </section>
 
-  <script src="script.js"></script>
+  <!-- Sección 3 -->
+  <section>
+    <h1 class="title">Última Sección</h1>
+    <p class="text">Puedes añadir más secciones, efectos y elementos visuales.</p>
+    <div class="img-placeholder"></div>
+  </section>
+
+  <script>
+    // Ocultar loader
+    window.addEventListener("load", () => {
+      const loader = document.getElementById("loader");
+      setTimeout(() => {
+        loader.style.opacity = 0;
+        setTimeout(() => loader.style.display = "none", 800);
+      }, 400);
+    });
+
+    // Animación scroll
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.3 });
+
+    document.querySelectorAll('.title, .text, .img-placeholder').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
+
 </body>
 </html>
