@@ -1,114 +1,128 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>ORIGEN - COVENANT</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ORIGEN - COVENANT</title>
 
-<!-- Tipografías -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Archivo+Black&display=swap" rel="stylesheet">
+  <!-- Tipografías -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Archivo+Black&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="origen.css" />
+  <link rel="stylesheet" href="origen.css" />
 </head>
 
 <body>
+  <style>
+    /* Scroll por secciones tipo libro */
+    html, body {
+      scroll-snap-type: y mandatory;
+      overflow-y: scroll;
+      height: 100%;
+    }
 
-<!-- LOADING SCREEN -->
-<div id="loader">
-  <div class="loader-bar">
-    <div class="loader-progress"></div>
-  </div>
-  <p class="loader-percentage">0%</p>
-</div>
+    section {
+      scroll-snap-align: start;
+      min-height: 100vh;
+      display: block;
+    }
+  </style>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-overlay"></div>
-  <div class="hero-content">
-    <h1>ORIGEN</h1>
-    <p class="subtitle">Donde nace la promesa.</p>
-  </div>
-</section>
-
-<!-- CONTENT -->
-<section class="content">
-
-  <!-- CAP I -->
-  <div class="block fade">
-    <h2>GÉNESIS</h2>
-    <p>
-      Covenant nació como una promesa. No de éxito, sino de <strong>propósito</strong>.
-      De hacer las cosas con intención, de construir algo que trascienda la moda.
-      Cada prenda, cada detalle, es una pieza de una historia que apenas comienza.
-    </p>
-    <p class="quote">“No nacimos para seguir tendencias. Nacimos para crear un legado.”</p>
-    <div class="image-block" style="background-image: url('origen2.jpg');"></div>
+  <!-- LOADING SCREEN -->
+  <div id="loader">
+    <div class="loader-bar">
+      <div class="loader-progress"></div>
+    </div>
+    <p class="loader-percentage">0%</p>
   </div>
 
-  <!-- CAP II -->
-  <div class="block fade">
-    <h2>FOUNDERS CLUB</h2>
-    <p>
-      El 4 de octubre surgió <strong>Founders Club</strong>: dos piezas — una para hombre y otra para mujer — más que camisetas, eran insignias.
-    </p>
-    <p>
-      Los que las tomaron se convirtieron en los primeros en creer. Pioneros. Guardianes del inicio.
-    </p>
-    <p>
-      Ser Founder significa acceso exclusivo, experiencias únicas y la oportunidad de dejar huella en la historia de Covenant.
-    </p>
-    <div class="image-block" style="background-image: url('founders.jpg');"></div>
-  </div>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>ORIGEN</h1>
+      <p class="subtitle">Donde nace la promesa.</p>
+    </div>
+  </section>
 
-  <!-- CAP III -->
-  <div class="block fade">
-    <h2>OATH</h2>
-    <p>
-      Covenant no se construyó rápido. Se construyó con obsesión.
-      Noches largas. Prototipos descartados. Diseños reconstruidos.
-      Caos convertido en propósito.
-    </p>
-    <p>
-      Cada prenda es una pieza de un relato en expansión. Una historia que apenas comienza a hablar.
-    </p>
-    <div class="image-block" style="background-image: url('forja.jpg');"></div>
-  </div>
+  <!-- CONTENT -->
+  <section class="content">
 
-  <!-- CAP IV -->
-  <div class="block fade">
-    <h2>HISTORY</h2>
-    <p>
-      Covenant no lanza ropa. Lanza <strong>temporadas narrativas</strong>.
-    </p>
-    <p>
-      Cada colección tiene historia. Cada temporada un mundo. Cada teaser un capítulo.
-      Cuando una era termina, no muere: se transforma.
-    </p>
-    <p class="easter">Algo nuevo se está gestando...</p>
-    <p class="easter">Un pacto aguarda.</p>
-    <div class="image-block" style="background-image: url('era.jpg');"></div>
-  </div>
+    <!-- CAP I -->
+    <div class="block fade">
+      <h2>GÉNESIS</h2>
+      <p>
+        Covenant nació como una promesa. No de éxito, sino de <strong>propósito</strong>.
+        De hacer las cosas con intención, de construir algo que trascienda la moda.
+        Cada prenda, cada detalle, es una pieza de una historia que apenas comienza.
+      </p>
+      <p class="quote">“No nacimos para seguir tendencias. Nacimos para crear un legado.”</p>
+      <div class="image-block" style="background-image: url('origen2.jpg');"></div>
+    </div>
 
-  <!-- CAP V -->
-  <div class="block fade">
-    <h2>THE FIRST CIRCLE</h2>
-    <p>
-      No somos solo una marca. Somos una orden.<br><br>
-      Los que crean: <strong>Covenant Crew</strong>.<br>
-      Los que portan: <strong>The First Circle</strong>.<br>
-      Los que creen: quienes entienden que vestir con intención es dejar huella.
-    </p>
-    <div class="image-block" style="background-image: url('circle.jpg');"></div>
-    <p class="easter">Chapter 1: (coming soon)</p>
-  </div>
+    <!-- CAP II -->
+    <div class="block fade">
+      <h2>FOUNDERS CLUB</h2>
+      <p>
+        El 4 de octubre surgió <strong>Founders Club</strong>: dos piezas — una para hombre y otra para mujer — más que camisetas, eran insignias.
+      </p>
+      <p>
+        Los que las tomaron se convirtieron en los primeros en creer. Pioneros. Guardianes del inicio.
+      </p>
+      <p>
+        Ser Founder significa acceso exclusivo, experiencias únicas y la oportunidad de dejar huella en la historia de Covenant.
+      </p>
+      <div class="image-block" style="background-image: url('founders.jpg');"></div>
+    </div>
 
-  <!-- CTA -->
-  <a href="https://covenantstudios.co/" class="cta">SE PARTE DE COVENANT</a>
+    <!-- CAP III -->
+    <div class="block fade">
+      <h2>LA FORJA</h2>
+      <p>
+        Covenant no se construyó rápido. Se construyó con obsesión.
+        Noches largas. Prototipos descartados. Diseños reconstruidos.
+        Caos convertido en propósito.
+      </p>
+      <p>
+        Cada prenda es una pieza de un relato en expansión. Una historia que apenas comienza a hablar.
+      </p>
+      <div class="image-block" style="background-image: url('forja.jpg');"></div>
+    </div>
 
-</section>
+    <!-- CAP IV -->
+    <div class="block fade">
+      <h2>LAS ERAS</h2>
+      <p>
+        Covenant no lanza ropa. Lanza <strong>temporadas narrativas</strong>.
+      </p>
+      <p>
+        Cada colección tiene historia. Cada temporada un mundo. Cada teaser un capítulo.
+        Cuando una era termina, no muere: se transforma.
+      </p>
+      <p class="easter"><em>Algo nuevo se está gestando...</em></p>
+      <p class="easter"><em>Un pacto aguarda.</em></p>
+      <div class="image-block" style="background-image: url('era.jpg');"></div>
+    </div>
 
-<script src="script.js"></script>
+    <!-- CAP V -->
+    <div class="block fade">
+      <h2>THE FIRST CIRCLE</h2>
+      <p>
+        No somos solo una marca. Somos una orden.<br><br>
+        Los que crean: <strong>Covenant Crew</strong>.<br>
+        Los que portan: <strong>The First Circle</strong>.<br>
+        Los que creen: quienes entienden que vestir con intención es dejar huella.
+      </p>
+      <div class="image-block" style="background-image: url('circle.jpg');"></div>
+      <p class="easter"><em>Chapter 0: Before the vow. (soon)</em></p>
+    </div>
+
+    <!-- CTA -->
+    <a href="https://covenantstudios.co" class="cta">SE PARTE DE COVENANT</a>
+
+  </section>
+
+  <script src="script.js"></script>
 </body>
 </html>
