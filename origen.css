@@ -1,4 +1,6 @@
-/* ------------------ RESET ------------------ */
+/* -------------------------------------------
+   RESET BÁSICO
+------------------------------------------- */
 * {
   margin: 0;
   padding: 0;
@@ -6,35 +8,124 @@
 }
 
 html, body {
-  width: 100%;
   height: 100%;
   scroll-behavior: smooth;
+  overscroll-behavior: none;
   background: #000;
   color: #fff;
-  font-family: 'Inter', sans-serif;
-  overflow-x: hidden;
+  font-family: "Inter", sans-serif;
 }
 
-/* ------------------ FULLPAGE SECTIONS ------------------ */
-section {
+/* -------------------------------------------
+   CONTENEDOR PRINCIPAL CON SCROLL POR PÁGINA
+------------------------------------------- */
+.origen-wrapper {
+  height: 100vh;
   width: 100%;
-  height: 100vh; /* cada sección ocupa la pantalla completa */
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+
+/* -------------------------------------------
+   SECCIONES
+------------------------------------------- */
+.page,
+.page--hero {
+  height: 100vh;
+  width: 100%;
+  scroll-snap-align: start;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 60px 10%;
+  padding: 60px 8vw;
   position: relative;
 }
 
-.block {
-  max-width: 700px;
+/* -------------------------------------------
+   TIPOGRAFÍA
+------------------------------------------- */
+h1, h2, h3 {
+  font-family: "Cormorant Garamond", serif;
+  letter-spacing: .5px;
 }
 
-/* Fade suavísimo */
-.fade {
+h1 {
+  font-size: 6vw;
+  line-height: 1.05;
+  font-weight: 600;
+}
+
+h2 {
+  font-size: 3.5vw;
+  margin-bottom: 20px;
+}
+
+p {
+  font-size: 1.4vw;
+  line-height: 1.6;
+  max-width: 760px;
+  opacity: 0.9;
+}
+
+/* -------------------------------------------
+   HERO — IMAGEN DE FONDO PERFECTA
+------------------------------------------- */
+.page--hero {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: 15vh;
+}
+
+.page--hero .hero-content {
+  max-width: 650px;
+  backdrop-filter: blur(2px);
+  padding: 20px 0;
+}
+
+/* Sombra suave para leer sobre imágenes */
+.page--hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.6), transparent 40%);
+  z-index: 1;
+}
+
+.page--hero * {
+  position: relative;
+  z-index: 2;
+}
+
+/* -------------------------------------------
+   IMÁGENES EN LAS SECCIONES
+------------------------------------------- */
+.page img {
+  width: 40%;
+  border-radius: 12px;
+  object-fit: cover;
+  align-self: flex-end;
+  box-shadow: 0 0 40px rgba(255,255,255,0.04);
+}
+
+/* Imagenes full */
+.page.image-full img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0;
+}
+
+/* -------------------------------------------
+   ESTILO "POÉTICO" / EFECTOS SUAVES
+------------------------------------------- */
+.fade-in {
   opacity: 0;
   transform: translateY(20px);
-  animation: fadeIn 1.6s ease forwards;
+  animation: fadeIn 1.2s ease forwards;
 }
 
 @keyframes fadeIn {
@@ -44,155 +135,59 @@ section {
   }
 }
 
-/* ------------------ HERO ------------------ */
-.hero {
-  background-size: cover;
-  background-position: center;
-  position: relative;
-  text-align: center;
-  background-image: url('hero.jpg');
-}
-
-.hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to bottom, rgba(0,0,0,.7), rgba(0,0,0,.4));
-}
-
-.hero-content {
-  position: relative;
-  z-index: 2;
-}
-
-.hero h1 {
-  font-family: 'Archivo Black', sans-serif;
-  font-size: 4rem;
-  letter-spacing: 4px;
-}
-
-.subtitle {
-  margin-top: 10px;
-  opacity: .8;
-  font-size: 1.2rem;
-}
-
-/* ------------------ IMAGE BLOCKS ------------------ */
-.image-block {
-  width: 100%;
-  height: 55vh;
-  background-size: cover;
-  background-position: center;
-  border-radius: 6px;
-  margin: 40px 0;
-  filter: brightness(.85);
-}
-
-/* ------------------ TITLES ------------------ */
-h2, .chapter-title {
-  font-family: 'Archivo Black', sans-serif;
-  font-size: 2.4rem;
-  margin-bottom: 20px;
-  letter-spacing: 2px;
-}
-
-.quote {
-  margin-top: 15px;
-  font-style: italic;
-  opacity: .8;
-}
-
-.easter {
-  margin-top: 20px;
-  opacity: .7;
-  font-style: italic;
-}
-
-/* ------------------ CTA BUTTON ------------------ */
-.cta {
+/* -------------------------------------------
+   BOTÓN FINAL
+------------------------------------------- */
+.origen-btn {
   display: inline-block;
-  padding: 14px 28px;
-  border: 1px solid #444;
+  margin-top: 40px;
+  padding: 14px 32px;
+  border: 1px solid #fff;
   color: #fff;
   text-decoration: none;
-  margin-top: 40px;
-  transition: .3s ease;
-  font-size: 1rem;
-  letter-spacing: 2px;
-  border-radius: 4px;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  transition: 0.25s ease;
+  letter-spacing: 1px;
 }
 
-.cta:hover {
-  border-color: #fff;
-  letter-spacing: 3px;
-}
-
-/* ------------------ LOADER ------------------ */
-#loader {
-  position: fixed;
-  inset: 0;
-  background: #000;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  z-index: 50;
-}
-
-.loader-bar {
-  width: 180px;
-  height: 2px;
-  background: #222;
-  overflow: hidden;
-  margin-bottom: 20px;
-}
-
-.loader-progress {
-  width: 0%;
-  height: 100%;
+.origen-btn:hover {
   background: #fff;
-  transition: width .2s ease;
+  color: #000;
 }
 
-.loader-percentage {
-  font-size: 1rem;
-  opacity: .7;
-}
-
-/* ------------------ RESPONSIVE ------------------ */
+/* -------------------------------------------
+   RESPONSIVE — MOBILE
+------------------------------------------- */
 @media (max-width: 768px) {
-
-  section {
-    padding: 40px 8%;
+  h1 {
+    font-size: 11vw;
   }
 
-  .hero h1 {
-    font-size: 2.6rem;
+  h2 {
+    font-size: 8vw;
   }
 
-  .chapter-title, h2 {
-    font-size: 1.9rem;
+  p {
+    font-size: 4vw;
   }
 
-  .image-block {
-    height: 40vh;
-  }
-}
-
-@media (max-width: 480px) {
-
-  .hero h1 {
-    font-size: 2.2rem;
+  .page {
+    padding: 40px 6vw;
   }
 
-  .subtitle {
-    font-size: .95rem;
+  .page img {
+    width: 100%;
+    margin-top: 25px;
   }
 
-  section {
-    padding: 35px 7%;
+  .page--hero {
+    align-items: flex-end;
+    padding: 30px 6vw 20vh;
+    background-position: center;
   }
 
-  .image-block {
-    height: 36vh;
+  .page--hero .hero-content {
+    max-width: 100%;
   }
 }
