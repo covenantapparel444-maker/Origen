@@ -1,33 +1,34 @@
-/* ===============================
-   RESET
-   =============================== */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+/* ============================
+   ORIGEN.CSS - VERSIÓN COMPLETA
+   Mantiene loader, hero, secciones,
+   scroll-snap, fade-in y responsivo.
+   ============================ */
 
-html, body {
-  height: 100%;
-  background: #000;
+/* ---------- RESET ---------- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { height: 100%; scroll-behavior: smooth; -webkit-font-smoothing:antialiased; }
+
+/* ---------- BASE / THEME ---------- */
+body {
+  background: #000;           /* oscuro estilo Covenant */
   color: #fff;
   font-family: 'Inter', sans-serif;
   overflow-x: hidden;
-  /* permite scroll por secciones */
-  scroll-behavior: smooth;
-  scroll-snap-type: y mandatory;
+  scroll-snap-type: y mandatory; /* snap por página */
+  -webkit-overflow-scrolling: touch;
 }
 
-/* Aseguramos que cada sección actúe como "página" */
+/* Asegura que cada sección haga snap */
 section {
   scroll-snap-align: start;
   min-height: 100vh;
-  display: block;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-/* ===============================
-   LOADING SCREEN
-   =============================== */
+/* ---------- LOADER ---------- */
 #loader {
   position: fixed;
   inset: 0;
@@ -38,7 +39,7 @@ section {
   align-items: center;
   z-index: 9999;
   opacity: 1;
-  transition: opacity 0.8s ease, visibility 0.8s;
+  transition: opacity 0.6s ease, visibility 0.6s;
   visibility: visible;
 }
 
@@ -53,44 +54,41 @@ section {
   max-width: 300px;
   height: 3px;
   background: #111;
-  overflow: hidden;
   border-radius: 2px;
+  overflow: hidden;
 }
 
 .loader-progress {
   width: 0%;
   height: 100%;
   background: #fff;
-  transition: width 0.2s linear;
+  transition: width 0.18s linear;
 }
 
 .loader-percentage {
-  margin-top: 15px;
-  font-size: 0.9rem;
-  color: #fff;
+  margin-top: 14px;
+  font-size: 0.92rem;
+  color: #ddd;
   letter-spacing: 2px;
-  opacity: 0.7;
+  opacity: 0.8;
 }
 
-/* ===============================
-   HERO
-   =============================== */
-/* Hero ocupa toda la pantalla por sección */
+/* ---------- HERO ---------- */
 .hero {
   width: 100%;
-  height: 100vh;
+  height: 100vh;                  /* full screen hero */
   position: relative;
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  background-image: url("hero.jpg");
+  background-image: url('hero.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  /* quitamos background-attachment: fixed por problemas en móvil */
+  z-index: 0;
+  /* background-attachment removed for mobile compatibility */
 }
 
-/* overlay para legibilidad */
 .hero-overlay {
   position: absolute;
   inset: 0;
@@ -98,87 +96,83 @@ section {
   z-index: 1;
 }
 
-/* contenido encima del hero */
 .hero-content {
   position: relative;
   z-index: 2;
   text-align: center;
   padding-bottom: 6rem;
-  max-width: 900px;
   width: 90%;
+  max-width: 980px;
+  margin: 0 auto;
 }
 
 .hero h1 {
   font-family: 'Archivo Black', sans-serif;
-  font-size: clamp(2.4rem, 6vw, 4rem);
+  font-size: clamp(2.4rem, 8vw, 4.2rem);
   letter-spacing: 6px;
-  line-height: 1;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
   opacity: 0;
-  animation: fadeIn 1.8s ease forwards;
+  animation: fadeIn 1.6s ease forwards;
 }
 
 .subtitle {
-  margin-top: 10px;
-  font-size: clamp(0.95rem, 2.2vw, 1.1rem);
+  margin-top: 6px;
+  font-size: clamp(0.95rem, 2.2vw, 1.2rem);
   letter-spacing: 3px;
-  opacity: 0.85;
-  animation: fadeIn 2.2s ease forwards;
+  opacity: 0.9;
+  color: rgba(255,255,255,0.9);
+  animation: fadeIn 2s ease forwards;
 }
 
-/* ===============================
-   CONTENT / CHAPTERS
-   =============================== */
-
+/* ---------- CONTENT / CHAPTERS ---------- */
 .content {
   width: 90%;
   max-width: 760px;
   margin: 40px auto 80px;
-  padding-top: 20px;
+  padding-top: 10px;
+  z-index: 2;
 }
 
-/* Si cada capítulo es su propia <section>, los estilos de .block funcionan dentro */
+/* .block es tu bloque de capítulos */
 .block {
   margin-bottom: 60px;
-  max-width: 100%;
 }
 
 .block h2 {
   font-family: "Archivo Black", sans-serif;
-  font-size: clamp(1.4rem, 3.4vw, 1.9rem);
+  font-size: clamp(1.4rem, 4vw, 1.95rem);
   margin-bottom: 14px;
   letter-spacing: 2px;
 }
 
 .block p {
-  font-size: clamp(0.95rem, 2.2vw, 1rem);
+  font-size: clamp(0.95rem, 2.1vw, 1rem);
   line-height: 1.7;
   color: #ddd;
   margin-bottom: 12px;
+  max-width: 100%;
 }
 
-/* citas/quotes */
+/* Citas / quotes */
 .quote {
   margin-top: 12px;
-  font-size: clamp(0.95rem, 2.1vw, 1rem);
+  font-size: clamp(0.95rem, 2vw, 1rem);
   font-style: italic;
-  opacity: 0.95;
+  color: rgba(255,255,255,0.95);
 }
 
-/* easter / microtexto */
+/* Easter / microtexto */
 .easter {
-  margin-top: 20px;
-  font-size: clamp(0.95rem, 2vw, 1.05rem);
+  margin-top: 16px;
+  font-size: clamp(0.9rem, 1.9vw, 1.05rem);
   color: #aaa;
   letter-spacing: 1px;
 }
 
-/* ===============================
-   IMAGE BLOCK (MEJOR COMPORTAMIENTO)
-   =============================== */
+/* ---------- IMAGE BLOCK (mejor comportamiento) ---------- */
 .image-block {
   width: 100%;
-  height: 55vh;                 /* buen equilibrio entre desktop y móvil */
+  height: 55vh;               /* equilibrio desktop / móvil */
   max-height: 1200px;
   background-size: cover;
   background-position: center;
@@ -188,41 +182,38 @@ section {
   filter: brightness(.92);
 }
 
-/* En secciones que quieran imagen full-screen, añade clase .image-full en el section */
+/* Si quieres que una sección sea imagen full-screen */
 section.image-full .image-block {
   height: 100vh;
   border-radius: 0;
 }
 
-/* ===============================
-   CTA BUTTON
-   =============================== */
-.cta {
-  display: block;
-  margin: 80px auto 0;
-  width: fit-content;
+/* ---------- CTA BUTTON ---------- */
+.cta, .origen-btn, .end-button {
+  display: inline-block;
+  margin: 40px 0 0;
   padding: 14px 28px;
-  border: 1px solid #444;
-  border-radius: 6px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: transparent;
   color: #fff;
   text-decoration: none;
   letter-spacing: 2px;
   font-size: 0.95rem;
-  transition: transform .18s ease, border-color .18s ease, background .18s ease, color .18s ease;
+  border-radius: 6px;
+  transition: transform .18s ease, border-color .18s ease, background .18s ease;
 }
 
-.cta:hover {
+.cta:hover, .origen-btn:hover, .end-button:hover {
   border-color: #fff;
   transform: translateY(-3px) scale(1.02);
+  background: rgba(255,255,255,0.06);
 }
 
-/* ===============================
-   FADE ANIMATION BLOCKS
-   =============================== */
+/* ---------- FADE ANIMATIONS / IN-VIEW ---------- */
 .fade {
   opacity: 0;
-  transform: translateY(25px);
-  transition: opacity 0.9s ease, transform 0.9s ease;
+  transform: translateY(20px);
+  transition: opacity .9s ease, transform .9s ease;
 }
 
 .fade.visible {
@@ -230,46 +221,45 @@ section.image-full .image-block {
   transform: translateY(0);
 }
 
+/* small keyframe fade (used by hero titles) */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(8px); }
-  to { opacity: 1; transform: translateY(0); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
-/* ===============================
-   RESPONSIVE (MÓVIL)
-   =============================== */
+/* ---------- RESPONSIVE ---------- */
 @media (max-width: 1024px) {
-  .content { margin: 30px auto 60px; padding-top: 10px; }
+  .content { margin: 30px auto 60px; padding-top: 6px; }
   .hero-content { padding-bottom: 4.5rem; }
   .image-block { height: 60vh; }
 }
 
 @media (max-width: 768px) {
-  html, body { scroll-snap-type: y mandatory; } /* reafirmar en móvil */
+  /* for mobile enforce snap and better layout */
+  html, body { scroll-snap-type: y mandatory; }
+
   .hero {
     height: 85vh;
     background-position: center top;
   }
 
-  .hero-overlay {
-    background: rgba(0,0,0,0.55);
-  }
-
-  /* usar una imagen alternativa optimizada para móvil si existe */
+  /* use mobile hero if present */
   .hero {
     background-image: url('hero-mobile.jpg');
+    background-size: cover;
   }
 
-  .hero-content { padding-bottom: 22vh; }
+  .hero-overlay { background: rgba(0,0,0,0.56); }
 
-  .content {
-    width: 94%;
-    margin: 22px auto 50px;
-  }
+  .hero-content { padding-bottom: 22vh; width: 92%; max-width: 640px; }
+
+  .hero h1 { font-size: clamp(1.9rem, 9vw, 2.6rem); letter-spacing: 4px; }
+
+  .content { width: 94%; margin: 22px auto 50px; }
 
   .block { margin-bottom: 36px; }
 
-  .image-block { height: 70vh; margin: 24px 0; border-radius: 6px; }
+  .image-block { height: 70vh; margin: 24px 0; border-radius: 8px; }
 
   .block p, .quote, .easter {
     font-size: 4.2vw;
@@ -279,7 +269,10 @@ section.image-full .image-block {
 
 /* Very small screens */
 @media (max-width: 420px) {
-  .hero h1 { font-size: 2.4rem; letter-spacing: 4px; }
+  .hero h1 { font-size: 2.1rem; letter-spacing: 3px; }
   .subtitle { font-size: 0.95rem; }
   .image-block { height: 66vh; }
 }
+
+/* ---------- UTILITIES (debug helpers, optional) ---------- */
+/* .show-bounds { outline: 1px solid rgba(255,0,0,0.08); } */
