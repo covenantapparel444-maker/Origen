@@ -1,21 +1,132 @@
-/* RESET */
+/* ------------------ RESET ------------------ */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-body {
+html, body {
+  width: 100%;
+  height: 100%;
+  scroll-behavior: smooth;
   background: #000;
   color: #fff;
   font-family: 'Inter', sans-serif;
   overflow-x: hidden;
 }
 
-/* =============================== */
-/*         LOADING SCREEN          */
-/* =============================== */
+/* ------------------ FULLPAGE SECTIONS ------------------ */
+section {
+  width: 100%;
+  height: 100vh; /* cada sección ocupa la pantalla completa */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 60px 10%;
+  position: relative;
+}
 
+.block {
+  max-width: 700px;
+}
+
+/* Fade suavísimo */
+.fade {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 1.6s ease forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ------------------ HERO ------------------ */
+.hero {
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  text-align: center;
+  background-image: url('hero.jpg');
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,.7), rgba(0,0,0,.4));
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.hero h1 {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 4rem;
+  letter-spacing: 4px;
+}
+
+.subtitle {
+  margin-top: 10px;
+  opacity: .8;
+  font-size: 1.2rem;
+}
+
+/* ------------------ IMAGE BLOCKS ------------------ */
+.image-block {
+  width: 100%;
+  height: 55vh;
+  background-size: cover;
+  background-position: center;
+  border-radius: 6px;
+  margin: 40px 0;
+  filter: brightness(.85);
+}
+
+/* ------------------ TITLES ------------------ */
+h2, .chapter-title {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 2.4rem;
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+}
+
+.quote {
+  margin-top: 15px;
+  font-style: italic;
+  opacity: .8;
+}
+
+.easter {
+  margin-top: 20px;
+  opacity: .7;
+  font-style: italic;
+}
+
+/* ------------------ CTA BUTTON ------------------ */
+.cta {
+  display: inline-block;
+  padding: 14px 28px;
+  border: 1px solid #444;
+  color: #fff;
+  text-decoration: none;
+  margin-top: 40px;
+  transition: .3s ease;
+  font-size: 1rem;
+  letter-spacing: 2px;
+  border-radius: 4px;
+}
+
+.cta:hover {
+  border-color: #fff;
+  letter-spacing: 3px;
+}
+
+/* ------------------ LOADER ------------------ */
 #loader {
   position: fixed;
   inset: 0;
@@ -24,215 +135,64 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  z-index: 9999;
-  opacity: 1;
-  transition: opacity 0.8s ease;
+  z-index: 50;
 }
 
 .loader-bar {
-  width: 70%;
-  max-width: 300px;
-  height: 3px;
+  width: 180px;
+  height: 2px;
   background: #222;
   overflow: hidden;
-  border-radius: 2px;
+  margin-bottom: 20px;
 }
 
 .loader-progress {
   width: 0%;
   height: 100%;
-  background: white;
-  transition: width 0.2s linear;
+  background: #fff;
+  transition: width .2s ease;
 }
 
 .loader-percentage {
-  margin-top: 15px;
-  font-size: 0.9rem;
-  color: #fff;
-  letter-spacing: 2px;
-  opacity: 0.7;
-}
-
-/* =============================== */
-/*             HERO                */
-/* =============================== */
-
-.hero {
-  height: 85vh;
-  width: 100%;
-  position: relative;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  background: url("hero.jpg") center/cover no-repeat;
-  background-attachment: fixed;
-}
-
-.hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(0,0,0,0.1), rgba(0,0,0,0.85));
-}
-
-.hero-content {
-  position: relative;
-  text-align: center;
-  padding-bottom: 80px;
-}
-
-.hero h1 {
-  font-family: 'Archivo Black', sans-serif;
-  font-size: 3rem;
-  letter-spacing: 6px;
-  animation: fadeIn 2s ease forwards;
-}
-
-.subtitle {
-  margin-top: 10px;
   font-size: 1rem;
-  letter-spacing: 3px;
-  opacity: 0.8;
-  animation: fadeIn 2.4s ease forwards;
+  opacity: .7;
 }
 
-/* =============================== */
-/*            CONTENT              */
-/* =============================== */
-
-.content {
-  width: 90%;
-  max-width: 760px;
-  margin: 70px auto 120px;
-}
-
-.block {
-  margin-bottom: 80px;
-}
-
-.block h2 {
-  font-family: "Archivo Black", sans-serif;
-  font-size: 1.8rem;
-  margin-bottom: 18px;
-  letter-spacing: 2px;
-}
-
-.block p {
-  font-size: 1rem;
-  line-height: 1.7;
-  color: #ddd;
-  margin-bottom: 12px;
-}
-
-.quote {
-  margin-top: 14px;
-  font-size: 1rem;
-  font-style: italic;
-  opacity: 0.9;
-}
-
-.easter {
-  margin-top: 20px;
-  font-size: 1.1rem;
-  color: #aaa;
-  letter-spacing: 1px;
-}
-
-.image-block {
-  width: 100%;
-  height: 260px;
-  background-size: cover;
-  background-position: center;
-  border-radius: 6px;
-  margin-top: 20px;
-}
-
-/* CTA BUTTON */
-.cta {
-  display: block;
-  margin: 120px auto 0;
-  width: fit-content;
-  padding: 14px 28px;
-  border: 1px solid #444;
-  border-radius: 6px;
-  color: #fff;
-  text-decoration: none;
-  letter-spacing: 2px;
-  font-size: 0.9rem;
-  transition: 0.3s ease;
-}
-
-.cta:hover {
-  border-color: #fff;
-  transform: scale(1.03);
-}
-
-/* =============================== */
-/*       FADE ANIMATION BLOCKS     */
-/* =============================== */
-
-.fade {
-  opacity: 0;
-  transform: translateY(25px);
-  transition: opacity 1s ease, transform 1s ease;
-}
-
-.fade.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-.hero {
-  position: relative;
-  width: 100%;
-  height: 100vh; /* hero pantalla completa */
-  background-image: url('hero.jpg');
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-}
-
-/* Móvil */
+/* ------------------ RESPONSIVE ------------------ */
 @media (max-width: 768px) {
-  .hero {
-    height: 85vh; /* un poco más pequeño en celular */
-    background-position: top center; /* evita que el foco quede mal */
-    background-size: cover; /* mantiene proporción */
+
+  section {
+    padding: 40px 8%;
   }
-}
 
-.image-block {
-  width: 100%;
-  height: 80vh;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  margin: 60px 0;
-}
+  .hero h1 {
+    font-size: 2.6rem;
+  }
 
-/* En móvil: más altas y mejor composición */
-@media (max-width: 768px) {
+  .chapter-title, h2 {
+    font-size: 1.9rem;
+  }
+
   .image-block {
-    height: 70vh;
-    background-position: center top;
+    height: 40vh;
   }
 }
 
-.hero-overlay {
-  background: rgba(0,0,0,0.45); /* oscurece ligeramente para ver el texto */
-}
-@media (max-width: 768px) {
-  .hero-overlay {
-    background: rgba(0,0,0,0.55);
-  }
-}
+@media (max-width: 480px) {
 
-@media (max-width: 768px) {
-  .hero {
-    background-image: url('hero-mobile.jpg');
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+
+  .subtitle {
+    font-size: .95rem;
+  }
+
+  section {
+    padding: 35px 7%;
+  }
+
+  .image-block {
+    height: 36vh;
   }
 }
