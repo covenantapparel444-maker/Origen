@@ -1,6 +1,6 @@
-/* -------------------------------------------
+/* ===============================
    RESET
-------------------------------------------- */
+   =============================== */
 * {
   margin: 0;
   padding: 0;
@@ -9,17 +9,25 @@
 
 html, body {
   height: 100%;
-  scroll-behavior: smooth;
   background: #000;
   color: #fff;
-  font-family: "Inter", sans-serif;
-  overflow: hidden;
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+  /* permite scroll por secciones */
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
 }
 
-/* =============================== */
-/*         LOADING SCREEN          */
-/* =============================== */
+/* Aseguramos que cada sección actúe como "página" */
+section {
+  scroll-snap-align: start;
+  min-height: 100vh;
+  display: block;
+}
 
+/* ===============================
+   LOADING SCREEN
+   =============================== */
 #loader {
   position: fixed;
   inset: 0;
@@ -30,14 +38,21 @@ html, body {
   align-items: center;
   z-index: 9999;
   opacity: 1;
-  transition: opacity 0.8s ease;
+  transition: opacity 0.8s ease, visibility 0.8s;
+  visibility: visible;
+}
+
+#loader.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
 }
 
 .loader-bar {
   width: 70%;
   max-width: 300px;
   height: 3px;
-  background: #222;
+  background: #111;
   overflow: hidden;
   border-radius: 2px;
 }
@@ -45,7 +60,7 @@ html, body {
 .loader-progress {
   width: 0%;
   height: 100%;
-  background: white;
+  background: #fff;
   transition: width 0.2s linear;
 }
 
@@ -57,167 +72,214 @@ html, body {
   opacity: 0.7;
 }
 
-/* -------------------------------------------
-   SCROLL POR SECCIONES
-------------------------------------------- */
-.origen-wrapper {
-  height: 100vh;
+/* ===============================
+   HERO
+   =============================== */
+/* Hero ocupa toda la pantalla por sección */
+.hero {
   width: 100%;
-  overflow-y: scroll;
-  scroll-snap-type: y mandatory;
-  scroll-behavior: smooth;
-}
-
-/* -------------------------------------------
-   SECCIONES (FUNCIONA CON TU HTML)
-------------------------------------------- */
-.page,
-.page--hero {
   height: 100vh;
-  width: 100%;
-  scroll-snap-align: start;
   position: relative;
   display: flex;
-  flex-direction: column;
+  align-items: flex-end;
   justify-content: center;
-  padding: 60px 8vw;
-}
-
-/* -------------------------------------------
-   TIPOGRAFÍA (RESPETA TUS CLASES)
-------------------------------------------- */
-.chapter-title {
-  font-family: "Cormorant Garamond", serif;
-  font-size: 4vw;
-  margin-bottom: 20px;
-  line-height: 1.1;
-  font-weight: 600;
-}
-
-.chapter-text {
-  font-size: 1.4vw;
-  max-width: 760px;
-  opacity: .85;
-  line-height: 1.6;
-}
-
-/* -------------------------------------------
-   HERO (COMPATIBLE)
-------------------------------------------- */
-.page--hero {
+  background-image: url("hero.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  display: flex;
-  justify-content: flex-end;
-  padding-bottom: 15vh;
+  /* quitamos background-attachment: fixed por problemas en móvil */
 }
 
-/* Degradado para legibilidad */
-.page--hero::after {
-  content: "";
+/* overlay para legibilidad */
+.hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.6), transparent 40%);
+  background: linear-gradient(180deg, rgba(0,0,0,0.12), rgba(0,0,0,0.85));
   z-index: 1;
 }
 
-.page--hero .content {
+/* contenido encima del hero */
+.hero-content {
   position: relative;
   z-index: 2;
-  max-width: 650px;
+  text-align: center;
+  padding-bottom: 6rem;
+  max-width: 900px;
+  width: 90%;
 }
 
-/* -------------------------------------------
-   IMÁGENES (FUNCIONA CON TU HTML)
-------------------------------------------- */
-.page img,
-.page--hero img {
-  width: 40%;
-  border-radius: 12px;
-  object-fit: cover;
-  align-self: flex-end;
-  margin-top: 20px;
-  box-shadow: 0 0 40px rgba(255,255,255,0.04);
-}
-
-/* Full image pages */
-.page.image-full img {
-  width: 100%;
-  height: 100%;
-  border-radius: 0;
-  object-fit: cover;
-  margin: 0;
-}
-
-/* -------------------------------------------
-   EFECTO SUAVE POÉTICO
-------------------------------------------- */
-.fade-in {
+.hero h1 {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: clamp(2.4rem, 6vw, 4rem);
+  letter-spacing: 6px;
+  line-height: 1;
+  margin-bottom: 6px;
   opacity: 0;
-  transform: translateY(20px);
-  animation: fadeIn 1.2s forwards ease;
+  animation: fadeIn 1.8s ease forwards;
 }
 
-@keyframes fadeIn {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.subtitle {
+  margin-top: 10px;
+  font-size: clamp(0.95rem, 2.2vw, 1.1rem);
+  letter-spacing: 3px;
+  opacity: 0.85;
+  animation: fadeIn 2.2s ease forwards;
 }
 
-/* -------------------------------------------
-   BOTÓN FINAL
-------------------------------------------- */
-.origen-btn {
-  display: inline-block;
-  margin-top: 40px;
-  padding: 14px 32px;
-  border: 1px solid #fff;
-  color: #fff;
-  text-decoration: none;
-  font-size: 1.1rem;
-  border-radius: 8px;
-  transition: 0.25s;
+/* ===============================
+   CONTENT / CHAPTERS
+   =============================== */
+
+.content {
+  width: 90%;
+  max-width: 760px;
+  margin: 40px auto 80px;
+  padding-top: 20px;
+}
+
+/* Si cada capítulo es su propia <section>, los estilos de .block funcionan dentro */
+.block {
+  margin-bottom: 60px;
+  max-width: 100%;
+}
+
+.block h2 {
+  font-family: "Archivo Black", sans-serif;
+  font-size: clamp(1.4rem, 3.4vw, 1.9rem);
+  margin-bottom: 14px;
+  letter-spacing: 2px;
+}
+
+.block p {
+  font-size: clamp(0.95rem, 2.2vw, 1rem);
+  line-height: 1.7;
+  color: #ddd;
+  margin-bottom: 12px;
+}
+
+/* citas/quotes */
+.quote {
+  margin-top: 12px;
+  font-size: clamp(0.95rem, 2.1vw, 1rem);
+  font-style: italic;
+  opacity: 0.95;
+}
+
+/* easter / microtexto */
+.easter {
+  margin-top: 20px;
+  font-size: clamp(0.95rem, 2vw, 1.05rem);
+  color: #aaa;
   letter-spacing: 1px;
 }
 
-.origen-btn:hover {
-  background: #fff;
-  color: #000;
+/* ===============================
+   IMAGE BLOCK (MEJOR COMPORTAMIENTO)
+   =============================== */
+.image-block {
+  width: 100%;
+  height: 55vh;                 /* buen equilibrio entre desktop y móvil */
+  max-height: 1200px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 8px;
+  margin: 30px 0;
+  filter: brightness(.92);
 }
 
-/* -------------------------------------------
-   RESPONSIVE — MOBILE
-------------------------------------------- */
+/* En secciones que quieran imagen full-screen, añade clase .image-full en el section */
+section.image-full .image-block {
+  height: 100vh;
+  border-radius: 0;
+}
+
+/* ===============================
+   CTA BUTTON
+   =============================== */
+.cta {
+  display: block;
+  margin: 80px auto 0;
+  width: fit-content;
+  padding: 14px 28px;
+  border: 1px solid #444;
+  border-radius: 6px;
+  color: #fff;
+  text-decoration: none;
+  letter-spacing: 2px;
+  font-size: 0.95rem;
+  transition: transform .18s ease, border-color .18s ease, background .18s ease, color .18s ease;
+}
+
+.cta:hover {
+  border-color: #fff;
+  transform: translateY(-3px) scale(1.02);
+}
+
+/* ===============================
+   FADE ANIMATION BLOCKS
+   =============================== */
+.fade {
+  opacity: 0;
+  transform: translateY(25px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+
+.fade.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===============================
+   RESPONSIVE (MÓVIL)
+   =============================== */
+@media (max-width: 1024px) {
+  .content { margin: 30px auto 60px; padding-top: 10px; }
+  .hero-content { padding-bottom: 4.5rem; }
+  .image-block { height: 60vh; }
+}
+
 @media (max-width: 768px) {
-
-  .chapter-title {
-    font-size: 9vw;
+  html, body { scroll-snap-type: y mandatory; } /* reafirmar en móvil */
+  .hero {
+    height: 85vh;
+    background-position: center top;
   }
 
-  .chapter-text {
-    font-size: 4vw;
+  .hero-overlay {
+    background: rgba(0,0,0,0.55);
   }
 
-  .page,
-  .page--hero {
-    padding: 40px 6vw;
+  /* usar una imagen alternativa optimizada para móvil si existe */
+  .hero {
+    background-image: url('hero-mobile.jpg');
   }
 
-  .page img,
-  .page--hero img {
-    width: 100%;
-    margin-top: 25px;
+  .hero-content { padding-bottom: 22vh; }
+
+  .content {
+    width: 94%;
+    margin: 22px auto 50px;
   }
 
-  .page--hero {
-    align-items: flex-end;
-    padding-bottom: 20vh;
-    background-position: center;
-  }
+  .block { margin-bottom: 36px; }
 
-  .page--hero .content {
-    max-width: 100%;
+  .image-block { height: 70vh; margin: 24px 0; border-radius: 6px; }
+
+  .block p, .quote, .easter {
+    font-size: 4.2vw;
+    line-height: 1.6;
   }
+}
+
+/* Very small screens */
+@media (max-width: 420px) {
+  .hero h1 { font-size: 2.4rem; letter-spacing: 4px; }
+  .subtitle { font-size: 0.95rem; }
+  .image-block { height: 66vh; }
 }
