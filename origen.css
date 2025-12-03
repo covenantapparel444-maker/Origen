@@ -281,64 +281,77 @@ section.image-full .image-block {
   Ajustes para imagenes + CTA
    =========================== */
 
-/* Centrar y separar adecuadamente la imagen dentro del bloque */
+/* ===========================
+   Ajustes para imágenes + CTA
+   =========================== */
+
+/* Imagen principal dentro de cada capítulo */
 .block .image-block {
   width: 100%;
-  max-width: 1100px;      /* evita que sea demasiado ancha en desktop */
-  margin: 28px auto;      /* centrado y espacio arriba/abajo */
+  max-width: 1000px;      /* perfecto para desktop */
+  margin: 26px auto 0;    /* centrada + espacio arriba */
   border-radius: 10px;
-  background-size: cover; /* mantiene estética (recorta si es necesario) */
-  background-position: center; /* mejor foco por defecto */
+
+  background-size: cover;
+  background-position: center;
   background-repeat: no-repeat;
-  /* altura responsiva: no exagerada en desktop, más alta en móvil */
-  height: clamp(38vh, 60vw, 80vh);
-  max-height: 1100px;
-  min-height: 360px;
+
+  /* Altura perfecta (compacta y estética) */
+  height: 48vh;
+  min-height: 300px;
+  max-height: 520px;      /* evita que se vuelva gigante */
   filter: brightness(.95);
 }
 
-/* Variante para imágenes horizontales (si quieres aplicarla: add class .landscape) */
+/* Para imágenes más horizontales (si alguna la quieres así) */
 .block .image-block.landscape {
-  height: clamp(36vh, 40vw, 60vh);
-  min-height: 320px;
+  height: 42vh;
+  min-height: 260px;
+  max-height: 480px;
 }
 
-/* Variante para imágenes verticales (add class .vertical) */
+/* Para imágenes verticales (si lo decides luego) */
 .block .image-block.vertical {
-  height: clamp(52vh, 70vw, 86vh);
-  min-height: 480px;
+  height: 58vh;
+  min-height: 380px;
+  max-height: 620px;
 }
 
-/* Asegurar que el CTA quede siempre debajo de la imagen y centrado */
-.block .cta,
-.block .origen-btn,
-.content > .cta {    /* cubre varios usos posibles */
-  display: inline-block;
-  margin: 20px auto 0;   /* separacion de la imagen */
+
+/* CTA SIEMPRE DEBAJO DE LA IMAGEN Y CENTRADO */
+.block .cta {
+  display: block;
+  margin: 22px auto 0;        /* centrado total */
+  width: fit-content;
   text-align: center;
+
   padding: 12px 26px;
   border-radius: 6px;
-  border: 1px solid rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.14);
   color: #fff;
   background: transparent;
 }
 
-/* para que no quede pegado a la derecha si tu .content está usando flex o alignments */
-.block { 
-  display: block;
-  width: 100%;
-}
-
-/* Ajustes mobile: imagen algo más alta para que la composición quede bien */
 @media (max-width: 768px) {
   .block .image-block {
-    height: clamp(60vh, 70vw, 78vh);
-    margin: 20px auto;
+    height: 46vh;
+    min-height: 240px;
+    max-height: 380px;
     border-radius: 8px;
-    background-position: center top; /* evita cortar el elemento principal en fotos verticales */
+    background-position: center top;   /* evita cortes raros */
   }
 
   .block .image-block.landscape {
-    height: clamp(40vh, 46vw, 56vh);
+    height: 40vh;
+    max-height: 340px;
+  }
+
+  .block .image-block.vertical {
+    height: 54vh;
+    max-height: 430px;
+  }
+
+  .block .cta {
+    margin-top: 18px;
   }
 }
