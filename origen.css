@@ -276,3 +276,69 @@ section.image-full .image-block {
 
 /* ---------- UTILITIES (debug helpers, optional) ---------- */
 /* .show-bounds { outline: 1px solid rgba(255,0,0,0.08); } */
+
+/* ===========================
+  Ajustes para imagenes + CTA
+   =========================== */
+
+/* Centrar y separar adecuadamente la imagen dentro del bloque */
+.block .image-block {
+  width: 100%;
+  max-width: 1100px;      /* evita que sea demasiado ancha en desktop */
+  margin: 28px auto;      /* centrado y espacio arriba/abajo */
+  border-radius: 10px;
+  background-size: cover; /* mantiene estética (recorta si es necesario) */
+  background-position: center; /* mejor foco por defecto */
+  background-repeat: no-repeat;
+  /* altura responsiva: no exagerada en desktop, más alta en móvil */
+  height: clamp(38vh, 60vw, 80vh);
+  max-height: 1100px;
+  min-height: 360px;
+  filter: brightness(.95);
+}
+
+/* Variante para imágenes horizontales (si quieres aplicarla: add class .landscape) */
+.block .image-block.landscape {
+  height: clamp(36vh, 40vw, 60vh);
+  min-height: 320px;
+}
+
+/* Variante para imágenes verticales (add class .vertical) */
+.block .image-block.vertical {
+  height: clamp(52vh, 70vw, 86vh);
+  min-height: 480px;
+}
+
+/* Asegurar que el CTA quede siempre debajo de la imagen y centrado */
+.block .cta,
+.block .origen-btn,
+.content > .cta {    /* cubre varios usos posibles */
+  display: inline-block;
+  margin: 20px auto 0;   /* separacion de la imagen */
+  text-align: center;
+  padding: 12px 26px;
+  border-radius: 6px;
+  border: 1px solid rgba(255,255,255,0.12);
+  color: #fff;
+  background: transparent;
+}
+
+/* para que no quede pegado a la derecha si tu .content está usando flex o alignments */
+.block { 
+  display: block;
+  width: 100%;
+}
+
+/* Ajustes mobile: imagen algo más alta para que la composición quede bien */
+@media (max-width: 768px) {
+  .block .image-block {
+    height: clamp(60vh, 70vw, 78vh);
+    margin: 20px auto;
+    border-radius: 8px;
+    background-position: center top; /* evita cortar el elemento principal en fotos verticales */
+  }
+
+  .block .image-block.landscape {
+    height: clamp(40vh, 46vw, 56vh);
+  }
+}
