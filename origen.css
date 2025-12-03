@@ -322,3 +322,19 @@ section.image-full .image-block {
     aspect-ratio: 3 / 4;
   }
 }
+
+/* ===========================
+   SOLO THE OATH (sección final)
+   Imagen más baja
+   =========================== */
+
+section:last-of-type .image-block {
+  aspect-ratio: 3 / 2 !important; /* más cortita */
+}
+
+@media (max-width: 768px) {
+  section:last-of-type .image-block {
+    aspect-ratio: 4 / 3 !important; /* un poco más cuadrada en móvil */
+  }
+}
+
