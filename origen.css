@@ -288,7 +288,7 @@ section.image-full .image-block {
 .block .image-block {
   width: 100%;
   max-width: 900px;
-  margin: 10px auto 0;   /* 🔥 más cerca del texto */
+  margin: 30px auto 0;   /* 🔥 más cerca del texto */
   border-radius: 12px;
   overflow: hidden;
   aspect-ratio: 3 / 4;   /* estándar, igual en PC y móvil */
@@ -308,7 +308,7 @@ section.image-full .image-block {
 /* CTA */
 .block .cta {
   display: block;
-  margin: 5px auto 0;
+  margin: 15px auto 0;
   width: fit-content;
   padding: 12px 26px;
   border-radius: 6px;
