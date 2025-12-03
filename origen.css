@@ -281,50 +281,33 @@ section.image-full .image-block {
   Ajustes para imagenes + CTA
    =========================== */
 
-/* ===========================
-   Ajustes para imágenes + CTA
-   =========================== */
-
-/* Imagen principal dentro de cada capítulo */
 .block .image-block {
   width: 100%;
-  max-width: 1000px;      /* perfecto para desktop */
-  margin: 26px auto 0;    /* centrada + espacio arriba */
-  border-radius: 10px;
+  max-width: 900px;       /* tamaño estándar en ambos dispositivos */
+  margin: 26px auto 0;
+  
+  border-radius: 12px;
+  overflow: hidden;
 
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
-  /* Altura perfecta (compacta y estética) */
-  height: 48vh;
-  min-height: 300px;
-  max-height: 520px;      /* evita que se vuelva gigante */
-  filter: brightness(.95);
+  /* Mantener siempre misma proporción en todos lados */
+  aspect-ratio: 3 / 4;     /* puedes cambiarlo según tus fotos */
 }
 
-/* Para imágenes más horizontales (si alguna la quieres así) */
-.block .image-block.landscape {
-  height: 42vh;
-  min-height: 260px;
-  max-height: 480px;
+/* Imagen real */
+.block .image-block img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;     /* 🔥 Nunca corta nada */
+  object-position: center;
+  display: block;
+  background: #000;        /* relleno elegante si la imagen no llena espacio */
 }
 
-/* Para imágenes verticales (si lo decides luego) */
-.block .image-block.vertical {
-  height: 58vh;
-  min-height: 380px;
-  max-height: 620px;
-}
-
-
-/* CTA SIEMPRE DEBAJO DE LA IMAGEN Y CENTRADO */
+/* CTA debajo */
 .block .cta {
   display: block;
-  margin: 22px auto 0;        /* centrado total */
+  margin: 18px auto 0;
   width: fit-content;
-  text-align: center;
-
   padding: 12px 26px;
   border-radius: 6px;
   border: 1px solid rgba(255,255,255,0.14);
@@ -332,26 +315,10 @@ section.image-full .image-block {
   background: transparent;
 }
 
+/* Móvil – MISMA proporción y tamaño */
 @media (max-width: 768px) {
   .block .image-block {
-    height: 46vh;
-    min-height: 240px;
-    max-height: 380px;
-    border-radius: 8px;
-    background-position: center top;   /* evita cortes raros */
-  }
-
-  .block .image-block.landscape {
-    height: 40vh;
-    max-height: 340px;
-  }
-
-  .block .image-block.vertical {
-    height: 54vh;
-    max-height: 430px;
-  }
-
-  .block .cta {
-    margin-top: 18px;
+    max-width: 90%;       /* ocupa más espacio, pero misma proporción */
+    aspect-ratio: 3 / 4;
   }
 }
