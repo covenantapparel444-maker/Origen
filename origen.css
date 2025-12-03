@@ -281,35 +281,34 @@ section.image-full .image-block {
    Imagenes + CTA (todas las secciones)
    =========================== */
 
+/* ===========================
+   Imagenes + CTA (todas)
+   =========================== */
+
 .block .image-block {
   width: 100%;
   max-width: 900px;
-  margin: 26px auto 0;
-
+  margin: 18px auto 0;   /* 🔥 más cerca del texto */
   border-radius: 12px;
   overflow: hidden;
-
+  aspect-ratio: 3 / 4;   /* estándar, igual en PC y móvil */
   display: flex;
   justify-content: center;
   align-items: center;
-
-  aspect-ratio: 3 / 4; /* proporción estándar */
 }
 
 /* Imagen interna */
 .block .image-block img {
   width: 100%;
   height: 100%;
-  object-fit: contain;  /* no corta nada */
-  object-position: center;
-  display: block;
+  object-fit: contain;
   background: #000;
 }
 
 /* CTA */
 .block .cta {
   display: block;
-  margin: 18px auto 0;
+  margin: 16px auto 0;
   width: fit-content;
   padding: 12px 26px;
   border-radius: 6px;
@@ -318,26 +317,18 @@ section.image-full .image-block {
   background: transparent;
 }
 
-/* Móvil – mismas proporciones */
-@media (max-width: 768px) {
-  .block .image-block {
-    max-width: 90%;
-    aspect-ratio: 3 / 4;
-  }
-}
-
 /* ===========================
-   SOLO THE OATH (sección específica)
+   THE OATH — más corta
    =========================== */
 
-/* (Coincide con la sección que contiene el H2 THE OATH) */
-section:has(h2:nth-of-type(1):contains("THE OATH")) .image-block {
-  aspect-ratio: 3 / 2 !important; /* más baja, entra el botón */
+.oath .image-block {
+  aspect-ratio: 2 / 3 !important;  /* 🔥 más baja en desktop */
 }
 
-/* Móvil – ligeramente más cuadrada */
+/* Móvil — mucho más corta todavía */
 @media (max-width: 768px) {
-  section:has(h2:nth-of-type(1):contains("THE OATH")) .image-block {
-    aspect-ratio: 4 / 3 !important;
+  .oath .image-block {
+    aspect-ratio: 1 / 1 !important;   /* 🔥 cuadrada = botón visible SIEMPRE */
+    max-height: 65vh;
   }
 }
